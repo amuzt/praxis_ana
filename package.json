@@ -11,5 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amuzt/praxis_ana.git"
+  },
+  "bugs": {
+    "url": "https://github.com/amuzt/praxis_ana/issues"
+  },
+  "homepage": "https://github.com/amuzt/praxis_ana#readme"
 }
