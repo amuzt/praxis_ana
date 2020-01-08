@@ -101,6 +101,13 @@ app.post('/user/userid', function (req, res) {
     res.send(`Selamat datang ${user}`)
 })
 
+app.post('/date', function (req, res) {
+    var tanggal = new Date()
+    res.send(`Selamat Datang di , ${tanggal}`)
+})
+
+
+
 var cb0 = function (req, res, next) {
     console.log('CB0')
     next()
