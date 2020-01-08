@@ -1,23 +1,15 @@
 {
-  "name": "latihan-praxis",
-  "version": "1.0.0",
-  "description": "latihan praxis",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "ana",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/amuzt/praxis_ana.git"
-  },
-  "bugs": {
-    "url": "https://github.com/amuzt/praxis_ana/issues"
-  },
-  "homepage": "https://github.com/amuzt/praxis_ana#readme"
+    "name": "simple-user-docker",
+    "version": "1.0.0",
+    "main": "app.js",
+    "dependencies": {
+        "express": "^4.16.4"
+    },
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.4"
+    }
 }
