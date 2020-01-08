@@ -7,12 +7,7 @@ app.use(express.urlencoded({
 }))
 
 app.get('/', (req, res) => {
-    var x, y, z
-    x = 5
-    y = 3
-    z = x + y
-
-    return res.send(`The value of z is ${z}`)
+    return res.send(`Hello World from Praxis`)
 })
 
 app.post('/tambah', (req, res) => {
@@ -95,6 +90,15 @@ app.post('/lingkaran', (req, res) => {
     return res.send(`Hasil luas lingkaran adalah ${lingkaran}`)
 })
 
+app.post('/pembulatan', (req, res) => {
+    /**
+     * Data type of variable a & b must be number, not string
+     */
+    angka = parseFloat(req.body.angka)
+    angka2 = Math.ceil(angka)
+    return res.send(`Hasil pembulatan adalah ${angka2}`)
+})
+
 app.post('/user/userid', function (req, res) {
     var user
     user = parseInt(req.body.user)
@@ -103,9 +107,9 @@ app.post('/user/userid', function (req, res) {
 
 app.post('/date', function (req, res) {
     var tanggal = new Date()
-    res.send(`Selamat Datang di , ${tanggal}`)
+    var tanggal2 = tanggal.toDateString()
+    res.send(`Anda mengunjungi situs ini pada , ${tanggal2}`)
 })
-
 
 
 var cb0 = function (req, res, next) {
