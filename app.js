@@ -99,6 +99,15 @@ app.post('/pembulatan', (req, res) => {
     return res.send(`Hasil pembulatan adalah ${angka2}`)
 })
 
+app.post('/apaya', (req, res) => {
+    /**
+     * Data type of variable a & b must be number, not string
+     */
+    angka = parseFloat(req.body.angka)
+    angka2 = Math.cbrt(angka)
+    return res.send(`Hasil cubic root adalah ${angka2}`)
+})
+
 app.post('/user/userid', function (req, res) {
     var user
     user = parseInt(req.body.user)
