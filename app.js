@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const object = require("./lib/objectobject"); // Import dari object.js
 
 // for parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({
