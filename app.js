@@ -1,8 +1,11 @@
+// @ts-check
+
 const express = require('express')
 const app = express()
 const object = require("./lib/object"); // Import dari object.js
 const array = require("./lib/object");
 const sort = require("./lib/sort");
+const routes = require("./lib/routes"); // Import dari routes.js
 
 // for parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({
@@ -97,6 +100,9 @@ app.post('/pembulatan', (req, res) => {
     /**
      * Data type of variable a & b must be number, not string
      */
+    var angka
+    var angka2
+
     angka = parseFloat(req.body.angka)
     angka2 = Math.ceil(angka)
     return res.send(`Hasil pembulatan adalah ${angka2}`)
@@ -106,6 +112,9 @@ app.post('/apaya', (req, res) => {
     /**
      * Data type of variable a & b must be number, not string
      */
+    var angka
+    var angka2
+
     angka = parseFloat(req.body.angka)
     angka2 = Math.cbrt(angka)
     return res.send(`Hasil cubic root adalah ${angka2}`)
@@ -183,7 +192,7 @@ app.get("/example4", (req, res) => {
     return res.send(result);
 });
 
-
+app.use("/array",routes);
 
 
 app.listen(3300, () => {
