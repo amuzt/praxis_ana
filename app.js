@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
-const object = require("./lib/objectobject"); // Import dari object.js
+const object = require("./lib/object"); // Import dari object.js
+const array = require("./lib/object");
+const sort = require("./lib/sort");
 
 // for parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({
@@ -138,6 +140,50 @@ app.get('/example', [cb0, cb1], function (req, res, next) {
 }, function (req, res) {
     res.send('Hello from D!')
 })
+
+app.get("/example1", (req, res) => {
+    let data = ["A", "B", "C", "D", "E"];
+    let manipulation = array.manipulate(data);
+
+    return res.send(manipulation);
+});
+
+app.get("/example2", (req, res) => {
+    let data = {
+        firstname: "Ana",
+        lastname: "Mustafiyah",
+        address: "Tebet",
+        hobby: "reading book",
+    };
+    let result = object.manipulate(data);
+
+    return res.send(result);
+});
+
+app.get("/example3", (req, res) => {
+    let input = ["Bakso"];
+    let data = ["Mie", "Kuetiauw", "Fuyunghai", "Koloke"];
+    console.log("before ", data);
+
+    let result = object.merge((data = data), (input = input));
+    console.log("after ", result);
+
+    let result1 = sort.ascending(result);
+
+    return res.send(result1);
+});
+
+app.get("/example4", (req, res) => {
+    let alpha = ["Najib", "Ali", "Ade", "Sinta", "Dwi", "Bambang", "Siti", "Nurjanah"];
+    console.log("Before", alpha);
+
+    let result = sort.ascending(alpha);
+    console.log("After", result);
+
+    return res.send(result);
+});
+
+
 
 
 app.listen(3300, () => {
