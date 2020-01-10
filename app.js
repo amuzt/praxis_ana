@@ -192,8 +192,15 @@ app.get("/example4", (req, res) => {
     return res.send(result);
 });
 
-app.use("/array",routes);
+app.use("/array", routes);
 
+app.use(function (req, res, next) {
+    res.status(404).send("Sorry can't find that!")
+})
+
+app.get('/random.text', function (req, res) {
+    res.send('random.text')
+})
 
 app.listen(3300, () => {
     console.log(`Example app listening on port 3300`)
