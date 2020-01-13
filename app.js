@@ -6,6 +6,9 @@ const object = require("./lib/object"); // Import dari object.js
 const array = require("./lib/object");
 const sort = require("./lib/sort");
 const routes = require("./lib/routes"); // Import dari routes.js
+const conditional = require("./lib/conditional");
+const loop_for = require('./lib/loop/loop_for')
+
 
 // for parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({
@@ -198,9 +201,50 @@ app.use(function (req, res, next) {
     res.status(404).send("Sorry can't find that!")
 })
 
-app.get('/random.text', function (req, res) {
-    res.send('random.text')
+/**
+ * How to using query parameter:
+ * 
+ * http://your_url:your_port/your_route?q=your_value
+ * or type in Query Params when using postman
+ * key      | value
+ * q        | your_value
+ */
+app.get("/task3", (req, res) => {
+    let q = req.query.q
+    console.log("First value ", q)
+
+    let result = conditional.equal(q)
+
+    return res.send(result)
 })
+
+app.get("/task4", (req, res) => {
+    let today = new Date().getDay()
+    console.log("Today ", today)
+
+    let result = conditional.day(today)
+
+    return res.send(result)
+})
+
+app.post("/task5", (req, res) => {
+    let number = req.body.number
+    console.log("section1 ", typeof number)
+    number = parseInt(number)
+    console.log("section2 ", typeof number)
+
+    let result = conditional.compare(number)
+
+    return res.send(result)
+})
+
+app.get("/loop-for", (req, res) => {
+    let data = ["Red", "Blue", "Green"]
+    let result = loop_for(data)
+
+    return res.send(result)
+})
+
 
 app.listen(3300, () => {
     console.log(`Example app listening on port 3300`)
