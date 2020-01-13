@@ -1,0 +1,28 @@
+{
+  "name": "day-6",
+  "version": "1.0.0",
+  "main": "day6",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.7.11",
+    "nodemon": "^1.19.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node day6.js",
+    "dev": "nodemon day6.js"
+  },
+  "author": "Adi",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trie168/day.git"
+  },
+  "bugs": {
+    "url": "https://github.com/trie168/day/issues"
+  },
+  "homepage": "https://github.com/trie168/day#readme",
+  "description": ""
+}
