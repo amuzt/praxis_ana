@@ -1,0 +1,20 @@
+{
+    "name": "praxis-005-nodejs-mongo",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "trie168",
+    "license": "MIT",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "lodash": "^4.17.15",
+        "moment": "^2.24.0",
+        "mongoose": "^5.6.9"
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.1"
+    }
+}
