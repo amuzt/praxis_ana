@@ -1,27 +1,45 @@
 const ResetPassword = require('../../models/reset.model')
 const User = require('../../models/user.model')
-const { randomKey } = require('../../lib/generatorkey')
+const {
+    randomKey
+} = require('../../lib/generatorkey')
 const nodemailer = require('nodemailer')
 const token = randomKey(54, 'aA#')
 
 
 class ForgotPassword {
-    constructor(email) {
-        this.email = email
+    constructor(req) {
+        this.email = req.body.email
+        this.username = req.body.username
     }
 
     async exec() {
         try {
-            let user = await User.findOne({ email: this.email }).exec()
+            let user = await User.findOne({
+                $or: [{
+                    email: this.email
+                }, {
+                    username: this.username
+                }]
+            }).exec()
 
-            if(user === null) {
+            if (user === null) {
                 throw new Error('User not found')
             }
 
-            
-            let password = new ResetPassword({ email: this.email, token })
-            await password.save()
-            
+
+            let password = new ResetPassword({
+                $or: [{
+                        email: this.email
+                    },
+                    {
+                        username: this.username
+                    }
+                ],
+                token
+            })
+            password.save()
+
             const options = {
                 host: process.env.EMAIL_HOST,
                 port: process.env.EMAIL_PORT,
@@ -40,7 +58,7 @@ class ForgotPassword {
                 html: ''
             }
 
-            setTimeout(async() => {
+            setTimeout(async () => {
                 return await transporter.sendMail(request_data, (error, res) => {
                     if (error) {
                         console.log(error)
@@ -48,11 +66,14 @@ class ForgotPassword {
                 })
             }, 600)
 
-            return {password, expires_in: '24 hours'}
+            return {
+                password,
+                expires_in: '24 hours'
+            }
         } catch (err) {
             throw err
         }
-        
+
     }
 }
 module.exports = ForgotPassword

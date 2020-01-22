@@ -3,6 +3,7 @@ const Schema = mongoose.Schema
 
 let resetPasswordSchema = new Schema ({
     email: String,
+    username: String,
     token: String,
     password: String,
     created_at: {

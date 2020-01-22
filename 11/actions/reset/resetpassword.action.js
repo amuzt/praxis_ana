@@ -20,7 +20,7 @@ class Reset {
             }
 
             let updateUser = await User.findOneAndUpdate({ _id: user._id }, { password: password }).exec()
-            let updateModel = await ResetPassword.findOneAndUpdate({ email: data.email }, { password: this.password }).exec()
+            let updateModel = await ResetPassword.findOneAndUpdate({ email: data.email, }, { password: this.password }).exec()
             
             // await ResetPassword.findOneAndDelete({ token: this.token }).exec()
             let pwd = this.password

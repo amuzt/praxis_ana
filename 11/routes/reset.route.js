@@ -6,7 +6,7 @@ const Reset = require("../actions/reset/resetpassword.action")
 
 router.post("/", async (req, res) => {
     try {
-        let data = await new ForgotPassword(req.body.email).exec()
+        let data = await new ForgotPassword(req).exec()
 
         return res.send({
             status: 'success',
@@ -31,7 +31,7 @@ router.get("/:token", async (req, res) => {
             status: 'success',
             data
         })
-    } catch(err) {
+    } catch (err) {
         return res.status(400).json({
             status: 'error',
             message: err.message
@@ -39,18 +39,18 @@ router.get("/:token", async (req, res) => {
     }
 })
 
-router.post("/:token", async(req, res) => {
+router.post("/:token", async (req, res) => {
     try {
         let data = await new Reset(req.body.password, req.params.token).exec()
 
         return res.send({
             status: 'success',
-            data_up:{
-                user:data,
+            data_up: {
+                user: data,
             }
-           
+
         })
-    } catch(err) {
+    } catch (err) {
         return res.status(400).json({
             status: 'error',
             message: err.message
